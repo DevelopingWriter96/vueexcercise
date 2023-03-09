@@ -17,25 +17,25 @@ export default {
             excercise: [
                 {
                     id: 1,
-                    date: '2023-03-08',
+                    date: '2023-03-07',
                     name: "Pushups",
                     amount: "100 reps",
                 },
                 {
                     id: 2,
-                    date: '2023-03-08',
+                    date: '2023-03-07',
                     name: "Situps",
                     amount: "100 reps",
                 },
                 {
                     id: 3,
-                    date: '2023-03-08',
+                    date: '2023-03-07',
                     name: "Squats",
                     amount: "100 reps",
                 },
                 {
                     id: 4,
-                    date: '2023-03-08',
+                    date: '2023-03-07',
                     name: 'Running',
                     amount: "100 km",
                 },
@@ -44,19 +44,26 @@ export default {
     },
     methods: {
         addExcercise(newExcercise) {
-            console.log('working')
+            
+            newExcercise.amount = 
+                newExcercise.name == "Running" 
+                ? newExcercise.amount = newExcercise.amount + ' km'
+                : newExcercise.amount = newExcercise.amount + ' reps'
+
             const lastId = 
                 this.excercise.length > 0
-                ? this.excercise[this.excercise.length].id
+                ? this.excercise[this.excercise.length - 1].id
                 : 0
             const id = lastId + 1
 
-            const newExcercise = {
+            const nextExcercise = {
                 ...newExcercise,
                 id
-            } 
+            }
 
-            this.excercise = [...this.excercise, newExcercise]
+            console.log()
+
+            this.excercise = [...this.excercise, nextExcercise]
         }
     }
 }
